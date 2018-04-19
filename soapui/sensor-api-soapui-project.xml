@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="8e3f63b4-cbbe-4847-ba44-05c937c7715f" activeEnvironment="Default" name="REST Project 1"
+                    resourceRoot="" soapui-version="5.4.0" abortOnError="false" runType="SEQUENTIAL"
+                    xmlns:con="http://eviware.com/soapui/config">
+    <con:settings/>
+    <con:interface xsi:type="con:RestService" id="4eac8c6e-d4dd-491a-b36a-3b10ad5761f8"
+                   wadlVersion="http://wadl.dev.java.net/2009/02" name="http://localhost:8080" type="rest"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:settings/>
+        <con:definitionCache/>
+        <con:endpoints>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+        </con:endpoints>
+        <con:resource name="" path="/sensor/api/saveEvent" id="b34a017a-2f0e-4bc5-bdc6-fe176b0b318e">
+            <con:settings/>
+            <con:parameters/>
+            <con:method name="1" id="0d55af68-974a-4ed6-b7b5-6a72222ae9f9" method="POST">
+                <con:settings/>
+                <con:parameters/>
+                <con:representation type="FAULT">
+                    <con:mediaType>application/json;charset=UTF-8</con:mediaType>
+                    <con:status>400 500</con:status>
+                    <con:params/>
+                    <con:element xmlns:sav="http://localhost/sensor/api/saveEvent">sav:Fault</con:element>
+                </con:representation>
+                <con:representation type="REQUEST">
+                    <con:mediaType>application/json</con:mediaType>
+                    <con:params/>
+                </con:representation>
+                <con:representation type="RESPONSE">
+                    <con:mediaType>application/json;charset=UTF-8</con:mediaType>
+                    <con:status>200</con:status>
+                    <con:params/>
+                    <con:element xmlns:sav="http://localhost/sensor/api/saveEvent">sav:Response</con:element>
+                </con:representation>
+                <con:request name="saveEvent" id="026adfeb-efda-4326-8e68-6c13f4902d6d" mediaType="application/json"
+                             postQueryString="false">
+                    <con:settings>
+                        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/>
+                        </con:setting>
+                    </con:settings>
+                    <con:endpoint>http://localhost:8080</con:endpoint>
+                    <con:request>{
+                        "sensorId": 5,
+                        "utc": 1524166590,
+                        "value": 23.17
+                        }
+                    </con:request>
+                    <con:originalUri>http://localhost/sensor/api/saveEvent</con:originalUri>
+                    <con:credentials>
+                        <con:authType>No Authorization</con:authType>
+                    </con:credentials>
+                    <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                    <con:jmsPropertyConfig/>
+                    <con:parameters/>
+                    <con:parameterOrder/>
+                </con:request>
+            </con:method>
+        </con:resource>
+    </con:interface>
+    <con:interface xsi:type="con:RestService" id="236b93a9-e1ba-4d70-8f93-8cfda4219324"
+                   wadlVersion="http://wadl.dev.java.net/2009/02" name="http://localhost:8080" type="rest"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:settings/>
+        <con:definitionCache/>
+        <con:endpoints>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+        </con:endpoints>
+        <con:resource name="" path="/sensor/api/getHistory" id="c76dc9e4-d1ac-4ebb-9737-b42a1b8b5fd7">
+            <con:settings/>
+            <con:parameters>
+                <con:parameter>
+                    <con:name>sensorId</con:name>
+                    <con:value/>
+                    <con:style>QUERY</con:style>
+                    <con:default/>
+                    <con:description xsi:nil="true"/>
+                </con:parameter>
+                <con:parameter>
+                    <con:name>fromUtc</con:name>
+                    <con:value/>
+                    <con:style>QUERY</con:style>
+                    <con:default/>
+                    <con:description xsi:nil="true"/>
+                </con:parameter>
+                <con:parameter>
+                    <con:name>toUtc</con:name>
+                    <con:value/>
+                    <con:style>QUERY</con:style>
+                    <con:default/>
+                    <con:description xsi:nil="true"/>
+                </con:parameter>
+            </con:parameters>
+            <con:method name="1" id="853ea20a-5b36-4949-9ece-6dd810696e07" method="GET">
+                <con:settings/>
+                <con:parameters/>
+                <con:representation type="RESPONSE">
+                    <con:mediaType>application/json;charset=UTF-8</con:mediaType>
+                    <con:status>200</con:status>
+                    <con:params/>
+                    <con:element>Response</con:element>
+                </con:representation>
+                <con:request name="getHistory" id="3b9ae6bd-16a6-4e89-917e-ddb1cb1057bd" mediaType="application/json">
+                    <con:settings>
+                        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/>
+                        </con:setting>
+                    </con:settings>
+                    <con:endpoint>http://localhost:8080</con:endpoint>
+                    <con:request/>
+                    <con:originalUri>http://localhost/sensor/api/getHistory</con:originalUri>
+                    <con:credentials>
+                        <con:authType>No Authorization</con:authType>
+                    </con:credentials>
+                    <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                    <con:jmsPropertyConfig/>
+                    <con:parameters>
+                        <con:entry key="fromUtc" value="1524160000"/>
+                        <con:entry key="sensorId" value="1"/>
+                        <con:entry key="toUtc" value="1524170000"/>
+                    </con:parameters>
+                    <con:parameterOrder>
+                        <con:entry>sensorId</con:entry>
+                        <con:entry>fromUtc</con:entry>
+                        <con:entry>toUtc</con:entry>
+                    </con:parameterOrder>
+                </con:request>
+            </con:method>
+        </con:resource>
+    </con:interface>
+    <con:interface xsi:type="con:RestService" id="df5f4437-fe6f-4d6a-907d-e7e3729317ce"
+                   wadlVersion="http://wadl.dev.java.net/2009/02" name="http://localhost:8080" type="rest"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:settings/>
+        <con:definitionCache/>
+        <con:endpoints>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+        </con:endpoints>
+        <con:resource name="" path="/sensor/api/getState" id="dcbbf531-7d03-4eec-ac15-674a57df208a">
+            <con:settings/>
+            <con:parameters>
+                <con:parameter>
+                    <con:name>subjectId</con:name>
+                    <con:value/>
+                    <con:style>QUERY</con:style>
+                    <con:default/>
+                    <con:description xsi:nil="true"/>
+                </con:parameter>
+            </con:parameters>
+            <con:method name="1" id="dc0d5c38-12f9-4247-b080-1824396c578e" method="GET">
+                <con:settings/>
+                <con:parameters/>
+                <con:representation type="FAULT">
+                    <con:mediaType>application/json;charset=UTF-8</con:mediaType>
+                    <con:status>500</con:status>
+                    <con:params/>
+                    <con:element xmlns:get="http://localhost/sensor/api/getState">get:Fault</con:element>
+                </con:representation>
+                <con:representation type="RESPONSE">
+                    <con:mediaType>application/json;charset=UTF-8</con:mediaType>
+                    <con:status>200</con:status>
+                    <con:params/>
+                    <con:element xmlns:get="http://localhost/sensor/api/getState">get:Response</con:element>
+                </con:representation>
+                <con:request name="getState" id="cce2b151-f6c0-4b69-b859-0b41c78cc980" mediaType="application/json">
+                    <con:settings>
+                        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/>
+                        </con:setting>
+                    </con:settings>
+                    <con:endpoint>http://localhost:8080</con:endpoint>
+                    <con:request/>
+                    <con:originalUri>http://localhost/sensor/api/getState</con:originalUri>
+                    <con:credentials>
+                        <con:authType>No Authorization</con:authType>
+                    </con:credentials>
+                    <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                    <con:jmsPropertyConfig/>
+                    <con:parameters>
+                        <entry key="subjectId" value="1" xmlns="http://eviware.com/soapui/config"/>
+                    </con:parameters>
+                    <con:parameterOrder>
+                        <con:entry>subjectId</con:entry>
+                    </con:parameterOrder>
+                </con:request>
+            </con:method>
+        </con:resource>
+    </con:interface>
+    <con:interface xsi:type="con:RestService" id="da02c973-a215-4cd6-86e2-70b9e5b9faa1"
+                   wadlVersion="http://wadl.dev.java.net/2009/02" name="http://localhost:8080" type="rest"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:settings/>
+        <con:definitionCache/>
+        <con:endpoints>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+        </con:endpoints>
+        <con:resource name="" path="/sensor/api/getApprox" id="6a24e662-add4-4e6a-81e7-8400bf266e1c">
+            <con:settings/>
+            <con:parameters/>
+            <con:method name="1" id="682d5b7b-d84a-4d80-b650-13586dca3589" method="GET">
+                <con:settings/>
+                <con:parameters/>
+                <con:representation type="RESPONSE">
+                    <con:mediaType>application/json;charset=UTF-8</con:mediaType>
+                    <con:status>200</con:status>
+                    <con:params/>
+                    <con:element xmlns:get="http://localhost/sensor/api/getApprox">get:Response</con:element>
+                </con:representation>
+                <con:request name="Request 1" id="2be23ed7-6d31-4f47-8bfb-3b8fd957e305" mediaType="application/json">
+                    <con:settings>
+                        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/>
+                        </con:setting>
+                    </con:settings>
+                    <con:endpoint>http://localhost:8080</con:endpoint>
+                    <con:request/>
+                    <con:originalUri>http://localhost/sensor/api/getApprox</con:originalUri>
+                    <con:credentials>
+                        <con:authType>No Authorization</con:authType>
+                    </con:credentials>
+                    <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                    <con:jmsPropertyConfig/>
+                    <con:parameters/>
+                </con:request>
+            </con:method>
+        </con:resource>
+    </con:interface>
+    <con:properties/>
+    <con:wssContainer/>
+    <con:oAuth2ProfileContainer/>
+    <con:oAuth1ProfileContainer/>
+    <con:sensitiveInformation/>
+</con:soapui-project>

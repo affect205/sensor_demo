@@ -1,4 +1,4 @@
-package com.alexside.sensor_demo;
+package com.alexside;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,10 +7,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class SensorDemoApplicationTests {
+public class SensorAppTests {
 
 	@Test
-	public void contextLoads() {
-	}
-
+	public void contextLoads() {}
 }

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <property name="LOG_HOME" value="/log"/>
+    <property name="LOG_FILE_NAME" value="server"/>
+
+    <appender name="FILE-AUDIT" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_HOME}\\${LOG_FILE_NAME}.log</file>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{100} - %msg%n</Pattern>
+        </encoder>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- rollover daily -->
+            <fileNamePattern>${LOG_HOME}\\${LOG_FILE_NAME}.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>10MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+    </appender>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %highlight(%-5level) %cyan(%logger{100}) - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <appender name="ASYNC-FILE-AUDIT" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="FILE-AUDIT"/>
+        <queueSize>500</queueSize>
+    </appender>
+
+    <appender name="ASYNC-STDOUT" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="STDOUT"/>
+        <queueSize>500</queueSize>
+    </appender>
+
+    <logger name="com.alexside" level="INFO" additivity="false">
+        <appender-ref ref="ASYNC-FILE-AUDIT"/>
+        <appender-ref ref="ASYNC-STDOUT"/>
+    </logger>
+
+    <!--Показывает запросы выполняемые hibernate.-->
+    <!--Оставляю тут что бы в случае резкой необходимости не пришлось срочно искать.-->
+    <!--<logger name="org.hibernate" level="INFO" additivity="false">-->
+        <!--<appender-ref ref="ASYNC-FILE-AUDIT"/>-->
+        <!--<appender-ref ref="ASYNC-STDOUT"/>-->
+    <!--</logger>-->
+
+    <!--В уровне trace показывает данные которые используются при запросах hibernate.-->
+    <!--Оставляю тут что бы в случае резкой необходимости не пришлось срочно искать.-->
+    <!--<logger name="org.hibernate.type" level="INFO" additivity="false">-->
+        <!--<appender-ref ref="ASYNC-FILE-AUDIT"/>-->
+        <!--<appender-ref ref="ASYNC-STDOUT"/>-->
+    <!--</logger>-->
+
+    <root level="INFO">
+        <appender-ref ref="ASYNC-FILE-AUDIT"/>
+        <appender-ref ref="ASYNC-STDOUT"/>
+    </root>
+
+</configuration>
