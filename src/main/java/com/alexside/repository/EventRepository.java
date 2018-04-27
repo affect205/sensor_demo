@@ -11,13 +11,10 @@ public interface EventRepository extends JpaRepository<Event, Long> {
             "where sensor_id = ?1 and utc between to_timestamp(?2) and to_timestamp(?3)", nativeQuery = true)
     List<Event> findEventsByInterval(Long sensorId, Integer fromUtc, Integer toUtc);
 
-    @Query(value = "select sensor_id, max(value) " +
-            "from sensor_events as e " +
+    @Query(value = "select distinct on (sensor_id) sensor_id, value " +
+            "from sensor_events " +
             "join sensors on sensors.id = sensor_id " +
-            "where " +
-            "  sensors.subject_id = ?1 " +
-            "  and " +
-            "  utc = (select max(utc) from sensor_events where sensor_id = e.sensor_id) " +
-            "group by sensor_id" , nativeQuery = true)
+            "where sensors.subject_id = ?1 " +
+            "order by sensor_id, utc DESC;" , nativeQuery = true)
     List<Object[]> findNewestEventsBySubjectId(Long subjectId);
 }
